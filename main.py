@@ -1,11 +1,11 @@
 __author__ = 'frankyao'
 
-from Log import Log
+from CLog import CLog
 
 class FooClass(object):
 
     def foo(self):
-        log = Log()
+        log = CLog()
         log.write('hello world')
 
 if __name__ == '__main__':
