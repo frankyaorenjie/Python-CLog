@@ -1,4 +1,4 @@
-__author__ = 'frankyao'
+__author__ = 'baniu.yao'
 
 from CLog import CLog
 
