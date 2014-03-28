@@ -1,0 +1,5 @@
+2014-03-28 18:00:38,212 [FooClass--foo--write] hello world
+2014-03-28 18:01:02,834 [FooClass--foo--write] hello world
+2014-03-28 18:01:38,286 [FooClass->foo->write] hello world
+2014-03-28 18:01:45,187 [FooClass-->foo-->write] hello world
+2014-03-28 18:01:50,085 [FooClass-->foo-->write] hello world
