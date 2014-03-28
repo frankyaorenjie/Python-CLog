@@ -4,10 +4,10 @@ from CLog import CLog
 
 class FooClass(object):
 
-    def foo(self):
+    def foo(self, text):
         log = CLog()
         log.write('hello world')
 
 if __name__ == '__main__':
     fc = FooClass()
-    fc.foo()
+    fc.foo('def')
