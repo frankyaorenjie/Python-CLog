@@ -3,6 +3,7 @@ __author__ = 'baniu.yao'
 
 import inspect
 import logging
+import re
 
 
 def get_class_from_frame(fr):
@@ -20,17 +21,24 @@ class CLog(object):
                             level=logging.DEBUG, filemode='aw',
                             format='%(asctime)s [%(chain)s] %(message)s')
 
+    def get_file_name_in_full_path(self, file_path):
+        return file_path.split('/')[-1]
+
     def get_meta_data(self):
-        frame = inspect.stack()[2][0]
-        current_frame = inspect.currentframe()
-        caller_frame = inspect.getouterframes(current_frame, 2)
-        args, _, _, value_dict = inspect.getargvalues(frame)
-        caller_class_name = get_class_from_frame(frame).__name__
-        file_name = caller_frame[-1][1].split('/')[-1]
-        caller_list = [file_name, caller_class_name]
-        for frame in caller_frame[-2:1:-1]:
-            caller_list.append(frame[3])
-        return ' --> '.join(caller_list)
+        frames = inspect.stack()
+        chain_list = []
+        for i in range(0, len(frames)):
+            _, file_path, _, func_name, _, _ = frames[i]
+            file_name = self.get_file_name_in_full_path(file_path)
+            try:
+                args = re.findall('\((.*)\)', frames[i+1][-2][0])[0]
+            except IndexError, e:
+                func_name = get_class_from_frame(frames[2][0]).__name__
+                args = ''
+            current_chain = '%s:%s(%s)' % (file_name, func_name, args)
+            chain_list.append(current_chain)
+        chain_list.reverse()
+        print ' --> '.join(chain_list[:-2])
 
     def write(self, message):
         chain = self.get_meta_data()
