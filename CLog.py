@@ -38,7 +38,7 @@ class CLog(object):
             current_chain = '%s:%s(%s)' % (file_name, func_name, args)
             chain_list.append(current_chain)
         chain_list.reverse()
-        print ' --> '.join(chain_list[:-2])
+        return ' --> '.join(chain_list[:-2])
 
     def write(self, message):
         chain = self.get_meta_data()
