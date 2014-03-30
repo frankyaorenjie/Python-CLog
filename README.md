@@ -1,4 +1,4 @@
-python-chain-log
+Python-CLog
 ================
 
 When I print log in python, what made me confused is that 'What this line of log comes from'. I think this is the circumstance almost every pythoner has encountered. If there is a way of logging, which can print the full stack of call-chain, it must be great. For this purpose, I write this small but userful module for python. I call this CLog which means Chain-Log.
