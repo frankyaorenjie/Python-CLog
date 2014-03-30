@@ -14,18 +14,18 @@ How to use CLog
 Since CLog is closely attached in Python internals, you just need to import this module and initialize it with a file name. And while you would like to print log, just use a 'write' method of instance. Let us see example.py.
 
 
-class FooClass(object):
+    class FooClass(object):
 
-    def foo(self, text):
-        log = CLog()
-        log.write('hello world')
+        def foo(self, text):
+            log = CLog()
+            log.write('hello world')
 
-if __name__ == '__main__':
-    fc = FooClass()
-    fc.foo('def')
+    if __name__ == '__main__':
+        fc = FooClass()
+        fc.foo('def')
 
 While you run python example.py, you will get 'test.log' in your PWD and its content is like:
-2014-03-30 19:09:35,582 [example.py:FooClass() --> example.py:foo('def')] hello world
+    2014-03-30 19:09:35,582 [example.py:FooClass() --> example.py:foo('def')] hello world
 
 It is really cool. In log file, there is file name, class name, function name and its parameters. Every body is clearly where this log comes from and I think this will help pythoner a lot.
 
